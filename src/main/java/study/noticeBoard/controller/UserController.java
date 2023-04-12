@@ -21,7 +21,7 @@ public class UserController {
     private final UserService userService;
 
     /* 로그인 화면으로 이동 */
-    @GetMapping("/any/login")
+    @GetMapping("/login")
     public String loginView(Model model) {
         return "board/login";
     }

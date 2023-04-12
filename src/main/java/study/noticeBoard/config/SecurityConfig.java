@@ -1,6 +1,8 @@
 package study.noticeBoard.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.security.reactive.PathRequest;
+import org.springframework.boot.autoconfigure.security.reactive.StaticResourceRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -34,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**" ,"/scss/**","/vendor/**");
+
     }
 
     @Override
@@ -41,13 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/", "/any/**", "/posts/read/**", "/posts/search/**")
+                .antMatchers("/","/login", "/any/**", "/posts/read/**", "/posts/search/**")
                 .permitAll()
-                .anyRequest()
-                .authenticated()
+                .anyRequest().authenticated()// 위 페이지 외 인증이 되어야 접근가능(ROLE에 상관없이)
                 .and()
                 .formLogin()
-                .loginPage("/any/login")
+                .loginPage("/login")
                 .loginProcessingUrl("/any/loginProc")
                 .defaultSuccessUrl("/any/posts/")
                 .and()
