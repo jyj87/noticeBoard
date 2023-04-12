@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+  <form action="/any/posts/create" method="post">
+    <div>
+      <label for="title">제목</label>
+      <input type="text" id="title" name="title"
+             placeholder="제목을 입력하세요">
+    </div>
+    <input type="hidden" id="writer" name="writer" th:value="${session.user.nickname}">
+    <div>
+      <label for="content">내용</label>
+      <textarea rows="10" id="content" name="content"
+                placeholder="내용을 입력하세요"></textarea>
+    </div>
+    <button type="submit"> 작성 </button>
+    <a href="/any/posts/" role="button"> 목록 </a>
+  </form>
+</div>
+</body>
+</html>
