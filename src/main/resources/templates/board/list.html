@@ -1,35 +1,37 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th class="col-md-1">번호</th>
-            <th class="col-md-4">글제목</th>
-            <th class="col-md-3">작성자</th>
-            <th class="col-md-2">작성일</th>
-            <th class="col-md-2">수정일</th>
-        </tr>
-        </thead>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+    <div class="container">
+        <table>
+            <thead>
+            <tr>
+                <th class="col-md-1">번호</th>
+                <th class="col-md-4">글제목</th>
+                <th class="col-md-3">작성자</th>
+                <th class="col-md-2">작성일</th>
+                <th class="col-md-2">수정일</th>
+            </tr>
+            </thead>
 
-        <tbody>
-        <tr th:each="post : ${postsList}">
-            <td th:text="${post.id}"></td>
-            <td><a th:href="'/any/posts/read/'+${post.id}" th:text="${post.title}"></a></td>
-            <td th:text="${post.writer}"></td>
-            <td th:text="${post.createdDate}"></td>
-            <td th:text="${post.modifiedDate}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<div>
-    <a href="/any/posts/write" role="button"> 글쓰기 </a>
-</div>
-<div>
-    <a th:if="${hasPrevious == true}" th:href="'/any/posts/?page='+${previous}" role="button"> < </a>
-    <a th:if="${hasNext == true}" th:href="'/any/posts/?page='+${next}" role="button"> > </a>
-</div>
-</body>
+            <tbody>
+            <tr th:each="post : ${postsList}">
+                <td th:text="${post.id}"></td>
+                <td><a th:href="'/any/posts/read/'+${post.id}" th:text="${post.title}"></a></td>
+                <td th:text="${post.writer}"></td>
+                <td th:text="${post.createdDate}"></td>
+                <td th:text="${post.modifiedDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="/any/posts/write" role="button"> 글쓰기 </a>
+    </div>
+    <div>
+        <a th:if="${hasPrevious == true}" th:href="'/any/posts/?page='+${previous}" role="button"> < </a>
+        <a th:if="${hasNext == true}" th:href="'/any/posts/?page='+${next}" role="button"> > </a>
+    </div>
+</th:block>
 </html>

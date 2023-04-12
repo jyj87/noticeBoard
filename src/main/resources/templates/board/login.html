@@ -1,22 +1,25 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-<div>
-    <form action="/any/loginProc" method="post">
-        <div>
-            <label for="username">이름</label>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+    <div class="container">
+        <form action="/any/loginProc" method="post">
+            <div>
+                <label for="username">이름</label>
 
-            <input type="text" id="username" name="username" placeholder="이름을 입력하세요">
-        </div>
-        <div>
-            <label for="password">비밀번호</label>
+                <input type="text" id="username" name="username" placeholder="이름을 입력하세요">
+            </div>
+            <div>
+                <label for="password">비밀번호</label>
 
-            <input type="text" id="password" name="password" placeholder="비밀번호을 입력하세요">
-        </div>
+                <input type="text" id="password" name="password" placeholder="비밀번호을 입력하세요">
+            </div>
 
-        <button type="submit">로그인</button>
-        <a href="/any/join">회원가입하기</a>
-    </form>
-</div>
-</body>
+            <button type="submit">로그인</button>
+            <a href="/any/join">회원가입하기</a>
+        </form>
+    </div>
+</th:block>
 </html>

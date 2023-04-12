@@ -1,63 +1,64 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-<div>
-    <table>
-        <thead>
-        <caption>글 읽기</caption>
-        </thead>
-        <tbody>
-        <tr>
-            <th>번호</th>
-            <td th:text="${post.id}"></td>
-        </tr>
-        <tr>
-            <th>작성자</th>
-            <td th:text="${post.writer}"></td>
-            <th>조회수</th>
-            <td th:text="${post.view}"></td>
-        </tr>
-        <tr>
-            <th>제목</th>
-            <td th:text="${post.title}"></td>
-        </tr>
-        <tr>
-            <th>본문 내용</th>
-            <td th:text="${post.content}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<a href="/any/posts/" role="button"> 목록 </a>
-<div th:if="${session.user.nickname == post.writer}">
-    <a th:href="'/any/posts/delete/'+${post.id}">삭제하기</a>
-    <a th:href="'/any/posts/modify/'+${post.id}">수정하기</a>
-</div>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default_layout">
+<th:block layout:fragment="content">
+    <div class="container">
+        <table>
+            <thead>
+            <caption>글 읽기</caption>
+            </thead>
+            <tbody>
+            <tr>
+                <th>번호</th>
+                <td th:text="${post.id}"></td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td th:text="${post.writer}"></td>
+                <th>조회수</th>
+                <td th:text="${post.view}"></td>
+            </tr>
+            <tr>
+                <th>제목</th>
+                <td th:text="${post.title}"></td>
+            </tr>
+            <tr>
+                <th>본문 내용</th>
+                <td th:text="${post.content}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/any/posts/" role="button"> 목록 </a>
+    <div th:if="${session.user.nickname == post.writer}">
+        <a th:href="'/any/posts/delete/'+${post.id}">삭제하기</a>
+        <a th:href="'/any/posts/modify/'+${post.id}">수정하기</a>
+    </div>
 
 
-<div th:if="${commentList != null}">
-    <table>
-        <tr th:each="comment :${commentList}">
-            <td th:text="${comment.id}"></td>
-            <td th:text="${comment.nickname}"></td>
-            <td th:text="${comment.comment}"></td>
-            <td th:text="${comment.createdDate}"></td>
-            <td><a th:if="${session.user.nickname == comment.nickname}"
-                   th:href="'/any/posts/comment/delete/'+${post.id}+'/'+${comment.id}">삭제</a></td>
-        </tr>
-    </table>
-</div>
+    <div th:if="${commentList != null}">
+        <table>
+            <tr th:each="comment :${commentList}">
+                <td th:text="${comment.id}"></td>
+                <td th:text="${comment.nickname}"></td>
+                <td th:text="${comment.comment}"></td>
+                <td th:text="${comment.createdDate}"></td>
+                <td><a th:if="${session.user.nickname == comment.nickname}"
+                       th:href="'/any/posts/comment/delete/'+${post.id}+'/'+${comment.id}">삭제</a></td>
+            </tr>
+        </table>
+    </div>
 
-<form action="/any/posts/comment/" method="post">
-    <input type="hidden" id="postId" name="postId" th:value="${post.id}">
-    <div>
+    <form action="/any/posts/comment/" method="post">
+        <input type="hidden" id="postId" name="postId" th:value="${post.id}">
+        <div>
         <textarea rows="10" id="comment" name="comment"
                   placeholder="댓글을 입력하세요"></textarea>
-    </div>
-    <div>
-        <button type="submit">댓글등록</button>
-    </div>
-</form>
-
-</body>
+        </div>
+        <div>
+            <button type="submit">댓글등록</button>
+        </div>
+    </form>
+</th:block>
 </html>
