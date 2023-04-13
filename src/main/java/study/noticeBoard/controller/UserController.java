@@ -54,7 +54,7 @@ public class UserController {
 
         userService.userJoin(dto);
         /* 회원가입이 성공하면 로그인 화면으로 이동 */
-        return "redirect:/any/login";
+        return "redirect:/login";
 
     }
 
