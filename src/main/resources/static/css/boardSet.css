@@ -1,0 +1,91 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+.form-write {
+  max-width: 660px;
+  padding: 15px;
+}
+
+.form-write input[type="textTitle"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-write textarea[type="textareaContent"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  height: 300px;
+}
+
+.form-detail textarea[type="textareaContent"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  height: 300px;
+}
+
+.form-update input[type="textTitle"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-update textarea[type="textareaContent"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  height: 300px;
+}
+
+
+.form-signin input[type="textName"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="textPassword"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-list {
+  max-width: 660px;
+  padding: 15px;
+}
+.form-detail {
+  max-width: 660px;
+  padding: 15px;
+}
+
+.form-update {
+  max-width: 660px;
+  padding: 15px;
+}
+
+
+.form-join {
+  max-width: 500px;
+  padding: 15px;
+}
+
+a {
+  text-decoration-line:none;
+}

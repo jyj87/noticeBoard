@@ -3,12 +3,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/default_layout">
 <th:block layout:fragment="content">
-    <div class="container">
+    <div class="container form-update border border-info">
         <form action="/any/posts/update" method="post">
             <div>
-                <table>
+                <table class="table table-sm text-center">
                     <thead>
-                    <caption>글 읽기</caption>
+                    <tr class="table-info">
+                        <th colspan="2">글 수정</th>
+                    </tr>
                     </thead>
                     <tbody>
                     <tr>
@@ -19,31 +21,28 @@
                     <tr>
                         <th>작성자</th>
                         <td th:text="${post.writer}"></td>
+                    </tr>
+                    <tr>
                         <th>조회수</th>
                         <td th:text="${post.view}"></td>
-                    </tr>
-                    <tr>
-                        <th>제목</th>
-                        <td>
-                            <input type="text" id="title" name="title"
-                                   placeholder="제목을 입력하세요">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>본문 내용</th>
-                        <td>
-                <textarea rows="10" id="content" name="content"
-                          placeholder="내용을 입력하세요"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button type="submit">수정</button>
-                        </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
+            <div class="form-floating">
+                <input class="form-control" type="textTitle" id="title" name="title">
+                <label for="title">제목을 입력하세요</label>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" type="textareaContent"
+                          id="content" name="content"></textarea>
+                <label for="content">내용을 입력하세요</label>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary btn-sm" type="submit">수정</button>
+                <a class="btn btn-primary btn-sm ms-2" href="/any/posts/" role="button"> 목록 </a>
+            </div>
+            </tr>
         </form>
     </div>
 </th:block>

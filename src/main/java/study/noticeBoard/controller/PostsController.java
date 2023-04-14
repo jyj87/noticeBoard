@@ -96,7 +96,6 @@ public class PostsController {
             /** 나중에 확인 */
             model.addAttribute("commentList", commentList);
         }
-        System.out.println("여기까지는 됨");
 
         /** 조회수 카운팅 */
         postsService.updateView(id);
