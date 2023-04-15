@@ -52,7 +52,8 @@ public class PostsController {
     public String postUpdate(PostsDto.Request dto, Model model) {
 
         postsService.update(dto.getId(), dto.getTitle(), dto.getContent());
-        return "redirect:/any/posts/";
+
+        return "redirect:/any/posts/read/"+dto.getId();
     }
 
     /* 게시판 글 수정폼으로 이동 */
