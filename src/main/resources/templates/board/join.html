@@ -10,25 +10,25 @@
                 <input type="text" class="form-control" id="username" name="username" placeholder="이름을 입력하세요"
                        th:value="${userDto}==null ? '' : ${userDto.username}">
                 <label for="username">이름</label>
-                <span th:if="${valid_username != null}" th:text="${valid_username}"></span>
+                <p class="valid-red-text" th:if="${valid_username != null}"><a th:text="${valid_username}"></a></p>
             </div>
             <div class="form-floating">
                 <input type="text" class="form-control" id="password" name="password" placeholder="비밀번호을 입력하세요"
                        th:value="${userDto}==null ? '' : ${userDto.password}">
-                <label for="username">비밀번호</label>
-                <span th:if="${valid_password != null}" th:text="${valid_password}"></span>
+                <label for="password">비밀번호</label>
+                <p class="valid-red-text" th:if="${valid_password != null}"><a th:text="${valid_password}"></a></p>
             </div>
             <div class="form-floating">
                 <input type="text" class="form-control" id="nickname" name="nickname" placeholder="별명을 입력하세요"
                        th:value="${userDto}==null ? '' : ${userDto.nickname}">
                 <label for="nickname">별명</label>
-                <span th:if="${valid_nickname != null}" th:text="${valid_nickname}"></span>
+                <p class="valid-red-text" th:if="${valid_nickname != null}"><a th:text="${valid_nickname}"></a></p>
             </div>
             <div class="form-floating">
                 <input type="text" class="form-control" id="email" name="email" placeholder="이메일을 입력하세요"
                        th:value="${userDto}==null ? '' : ${userDto.email}">
                 <label for="email">이메일</label>
-                <span th:if="${valid_email != null}" th:text="${valid_email}"></span>
+                <p class="valid-red-text" th:if="${valid_email != null}"><a th:text="${valid_email}"></a></p>
             </div>
             <div class="mx-auto p-2">
                 <button class="w-100 btn btn-primary btn-sm" type="submit">등록</button>

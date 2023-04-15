@@ -46,6 +46,17 @@ public class UserController {
         return "board/join";
     }
 
+    /* 로그인 실패시 에러 메세지 처리 */
+    @GetMapping("/any/login")
+    public String loginFail(@RequestParam(value = "error",required = false) String error,
+                            @RequestParam(value = "exception",required = false) String exception,
+                            Model model){
+        model.addAttribute("error",error);
+        model.addAttribute("exception",exception);
+
+        return "board/login";
+    }
+
     /* 회원가입 진행 <등록버튼 클릭시> */
     @PostMapping("/any/joinProc")
     public String joinProc(@Valid UserDto.Request dto, Errors errors, Model model) {

@@ -16,7 +16,11 @@
                     <input class="form-control" type="textPassword" id="password" name="password">
                     <label for="password">password</label>
                 </div>
-
+               <!-- 로그인에러 테스트중-->
+                <div th:if="error">
+                    <p id="valid" class="valid-red-text"><a th:text="${exception}"></a></p>
+                </div>
+                <!-- 로그인에러 테스트중-->
                 <div class="mx-auto p-2">
                     <button class="w-100 btn btn-primary btn-sm" type="submit">로그인</button>
                 </div>
