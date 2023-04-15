@@ -4,12 +4,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import study.noticeBoard.dto.UserDto;
 import study.noticeBoard.entity.User;
 import study.noticeBoard.service.UserService;
+import study.noticeBoard.validator.CustomVaildators;
 
 import javax.validation.Valid;
 import java.util.Map;
@@ -19,6 +22,17 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
+    private final CustomVaildators.EmailValidator emailValidator;
+    private final CustomVaildators.NicknameValidator nicknameValidator;
+    private final CustomVaildators.UsernameValidator usernameValidator;
+
+    /* UserController 진입시 먼서 실행되여 유효성 검사를 함 */
+    @InitBinder
+    public void validatorBinder(WebDataBinder dataBinder) {
+        dataBinder.addValidators(emailValidator);
+        dataBinder.addValidators(nicknameValidator);
+        dataBinder.addValidators(usernameValidator);
+    }
 
     /* 로그인 화면으로 이동 */
     @GetMapping("/login")
