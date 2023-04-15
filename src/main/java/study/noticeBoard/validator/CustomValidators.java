@@ -11,7 +11,7 @@ import study.noticeBoard.repository.UserRepository;
  */
 @RequiredArgsConstructor
 @Component
-public class CustomVaildators {
+public class CustomValidators {
 
     @RequiredArgsConstructor
     @Component
@@ -34,7 +34,7 @@ public class CustomVaildators {
         private final UserRepository userRepository;
         @Override
         public void doValidate(UserDto.Request dto, Errors errors) {
-            if (userRepository.existsByEmail(dto.toEntity().getNickname())) {
+            if (userRepository.existsByNickname(dto.toEntity().getNickname())) {
                 errors.rejectValue("nickname",
                         "닉네임 중복 오류",
                         "이미 사용중인 닉네임 입니다.");
@@ -48,7 +48,7 @@ public class CustomVaildators {
         private final UserRepository userRepository;
         @Override
         public void doValidate(UserDto.Request dto, Errors errors) {
-            if (userRepository.existsByEmail(dto.toEntity().getUsername())) {
+            if (userRepository.existsByUsername(dto.toEntity().getUsername())) {
                 errors.rejectValue("username",
                         "아이디 중복 오류",
                         "이미 사용중인 아이디 입니다.");

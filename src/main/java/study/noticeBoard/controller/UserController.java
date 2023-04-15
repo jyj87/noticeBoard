@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import study.noticeBoard.dto.UserDto;
 import study.noticeBoard.entity.User;
 import study.noticeBoard.service.UserService;
-import study.noticeBoard.validator.CustomVaildators;
+import study.noticeBoard.validator.CustomValidators;
 
 import javax.validation.Valid;
 import java.util.Map;
@@ -22,9 +22,9 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
-    private final CustomVaildators.EmailValidator emailValidator;
-    private final CustomVaildators.NicknameValidator nicknameValidator;
-    private final CustomVaildators.UsernameValidator usernameValidator;
+    private final CustomValidators.EmailValidator emailValidator;
+    private final CustomValidators.NicknameValidator nicknameValidator;
+    private final CustomValidators.UsernameValidator usernameValidator;
 
     /* UserController 진입시 먼서 실행되여 유효성 검사를 함 */
     @InitBinder
