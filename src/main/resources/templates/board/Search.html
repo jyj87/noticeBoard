@@ -18,7 +18,7 @@
                 </thead>
 
                 <tbody>
-                <tr th:each="post : ${postsList}">
+                <tr th:each="post : ${searchList}">
                     <td th:text="${post.id}"></td>
                     <td><a th:href="'/any/posts/read/'+${post.id}" th:text="${post.title}"></a></td>
                     <td th:text="${post.writer}"></td>
@@ -29,13 +29,13 @@
             </table>
         </div>
         <div class="text-center">
-            <a th:if="${hasPrevious == true}" th:href="'/any/posts/?page='+${previous}" role="button">
+            <a th:if="${hasPrevious == true}" th:href="'/any/posts/search?searchKey='+${searchKey}+'&keyword='+${keyword}+'&page='+${previous}" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
                     <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
                 </svg>
             </a>
-            <a th:if="${hasNext == true}" th:href="'/any/posts/?page='+${next}" role="button">
+            <a th:if="${hasNext == true}" th:href="'/any/posts/search?searchKey='+${searchKey}+'&keyword='+${keyword}+'&page='+${next}" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
                     <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>

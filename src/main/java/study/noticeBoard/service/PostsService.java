@@ -59,13 +59,6 @@ public class PostsService {
 
     }
 
-    /* PostsListRead */
-/*    @Transactional(readOnly = true)
-    public List<Posts> postsList() {
-        return postsRepository.findAll();
-
-    }*/
-
     /* PostRead */
     @Transactional(readOnly = true)
     public PostsDto.Response postRead(Long id) {
@@ -89,6 +82,23 @@ public class PostsService {
     @Transactional
     public int updateView(Long id) {
         return postsRepository.updateView(id);
+    }
+
+    /* 검색 조회 */
+    @Transactional(readOnly = true)
+    public Page<Posts> titleSearch(String keyword, Pageable pageable, int searchKey) {
+
+        Page<Posts> postsList;
+        /* 타이틀 검색 조회 */
+        if (searchKey == 1) {
+            postsList = postsRepository
+                    .findByTitleContaining(keyword, pageable);
+            /* 작성자 검색 조회 */
+        } else {
+            postsList = postsRepository
+                    .findByWriterContaining(keyword, pageable);
+        }
+        return postsList;
     }
 
 

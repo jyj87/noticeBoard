@@ -11,10 +11,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import study.noticeBoard.dto.CommentDto;
 import study.noticeBoard.dto.PostsDto;
 import study.noticeBoard.dto.UserDto;
@@ -53,7 +50,7 @@ public class PostsController {
 
         postsService.update(dto.getId(), dto.getTitle(), dto.getContent());
 
-        return "redirect:/any/posts/read/"+dto.getId();
+        return "redirect:/any/posts/read/" + dto.getId();
     }
 
     /* 게시판 글 수정폼으로 이동 */
@@ -76,13 +73,13 @@ public class PostsController {
                                         direction = Sort.Direction.DESC,
                                         size = 6) Pageable pageable) {
         Page<Posts> posts = postsService.postPageListRead(pageable);
-        model.addAttribute("postsList",posts);
-        model.addAttribute("previous",pageable.previousOrFirst().getPageNumber());
-        model.addAttribute("next",pageable.next().getPageNumber());
+        model.addAttribute("postsList", posts);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
         /* 다음 페이지 여부 ->true 존재 */
-        model.addAttribute("hasNext",posts.hasNext());
+        model.addAttribute("hasNext", posts.hasNext());
         /* 이전 페이지 여부 ->true 존재 */
-        model.addAttribute("hasPrevious",posts.hasPrevious());
+        model.addAttribute("hasPrevious", posts.hasPrevious());
 
         return "board/list";
     }
@@ -110,6 +107,29 @@ public class PostsController {
     @GetMapping("/any/posts/write")
     public String writeView(Model model) {
         return "board/write";
+    }
+
+    /* 게시판 검색 */
+    @GetMapping("any/posts/search")
+    public String search(String keyword,
+                         @RequestParam("searchKey") int searchKey,
+                         @PageableDefault(sort = "id",
+                                 direction = Sort.Direction.DESC,
+                                 size = 6) Pageable pageable, Model model) {
+        Page<Posts> posts = postsService.titleSearch(keyword,pageable,searchKey);
+        model.addAttribute("searchList", posts);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        /* 다음 페이지 여부 ->true 존재 */
+        model.addAttribute("hasNext", posts.hasNext());
+        /* 이전 페이지 여부 ->true 존재 */
+        model.addAttribute("hasPrevious", posts.hasPrevious());
+        /* 검색어 */
+        model.addAttribute("keyword", keyword);
+        /* 검색범위 제목/작성자 */
+        model.addAttribute("searchKey", searchKey);
+
+        return "board/search";
     }
 
 }

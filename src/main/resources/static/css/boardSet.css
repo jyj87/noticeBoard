@@ -91,6 +91,11 @@ body {
   font-size:12px;
 }
 
+.div-center-margin {
+  margin-left: 0.5rem!important;
+  margin-right: 0.5rem!important;
+}
+
 a {
   text-decoration-line:none;
 }
