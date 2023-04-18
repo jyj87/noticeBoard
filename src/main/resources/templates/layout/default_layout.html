@@ -3,8 +3,15 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <th:block th:replace="fragments/header :: headerFragment"></th:block>
-<body>
-<th:block layout:fragment="content"></th:block>
-</body>
-<th:block th:replace="fragments/footer :: footerFragment"></th:block>
+
+<div class="n-width ">
+    <th:block th:replace="fragments/nav :: navFragment"></th:block>
+</div>
+<div class="c-width">
+    <th:block layout:fragment="content"></th:block>
+</div>
+<div class="f-width">
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+</div>
+
 </html>

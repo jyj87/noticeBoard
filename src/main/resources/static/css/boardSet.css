@@ -1,24 +1,11 @@
 html,
+
 body {
   height: 100%;
-}
-
-body {
-  display: flex;
   align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background-color: #f5f5f5;
-}
-
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-}
-
-.form-write {
-  max-width: 660px;
-  padding: 15px;
 }
 
 .form-write input[type="textTitle"] {
@@ -66,23 +53,42 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.form-list {
-  max-width: 660px;
+.form-signin {
+  max-width: 330px;
   padding: 15px;
 }
-.form-detail {
+
+.form-write {
   max-width: 660px;
   padding: 15px;
 }
 
+.form-list {
+  max-width: 930px;
+  padding: 15px;
+}
+
+.form-detail {
+  max-width: 660px;
+  padding: 15px;
+}
 .form-update {
   max-width: 660px;
   padding: 15px;
 }
 
-
 .form-join {
   max-width: 500px;
+  padding: 15px;
+}
+
+.form-nav {
+  max-width: 930px;
+  padding: 5px;
+}
+
+.form-footer {
+  max-width: 930px;
   padding: 15px;
 }
 
@@ -94,6 +100,25 @@ body {
 .div-center-margin {
   margin-left: 0.5rem!important;
   margin-right: 0.5rem!important;
+}
+
+.n-width{
+  height: 100px;
+  width: 100%
+}
+
+.f-width{
+/*  position: absolute;
+  right: 0px;
+  bottom: 0px;*/
+  height: 100px;
+  width: 100%
+}
+
+.c-width{
+  height: 650px;
+  width: 100%
+
 }
 
 a {

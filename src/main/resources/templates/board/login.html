@@ -3,31 +3,30 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/default_layout">
-
 <th:block layout:fragment="content">
-        <div class="container form-signin">
-            <form action="/any/loginProc" method="post">
-                <h1 class="text-center h3 mb-3 fw-normal">Please sign in</h1>
-                <div class="form-floating">
-                    <input class="form-control" type="textName" id="username" name="username">
-                    <label for="username">id</label>
-                </div>
-                <div class="form-floating">
-                    <input class="form-control" type="textPassword" id="password" name="password">
-                    <label for="password">password</label>
-                </div>
-               <!-- 로그인에러 테스트중-->
-                <div th:if="error">
-                    <p id="valid" class="valid-red-text"><a th:text="${exception}"></a></p>
-                </div>
-                <!-- 로그인에러 테스트중-->
-                <div class="mx-auto p-2">
-                    <button class="w-100 btn btn-primary btn-sm" type="submit">로그인</button>
-                </div>
-                <div class="mx-auto p-2">
-                    <a class="w-100 btn btn-primary btn-sm" role="button" href="/any/join">회원가입하기</a>
-                </div>
-            </form>
-        </div>
+    <div class="container form-signin">
+        <form action="/any/loginProc" method="post">
+            <h1 class="text-center h3 mb-3 fw-normal">Please sign in</h1>
+            <div class="form-floating">
+                <input class="form-control" type="textName" id="username" name="username">
+                <label for="username">id</label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" type="textPassword" id="password" name="password">
+                <label for="password">password</label>
+            </div>
+            <!-- 로그인에러 테스트중-->
+            <div th:if="error">
+                <p id="valid" class="valid-red-text"><a th:text="${exception}"></a></p>
+            </div>
+            <!-- 로그인에러 테스트중-->
+            <div class="mx-auto p-2">
+                <button class="w-100 btn btn-primary btn-sm" type="submit">로그인</button>
+            </div>
+            <div class="mx-auto p-2">
+                <a class="w-100 btn btn-primary btn-sm" role="button" href="/any/join">회원가입하기</a>
+            </div>
+        </form>
+    </div>
 </th:block>
 </html>
