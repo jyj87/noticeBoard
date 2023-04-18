@@ -33,12 +33,6 @@ public class UserService {
         return userRepository.save(dto.toEntity()).getId();
 
     }
-    /* 회원아이디 조회 */
-    @Transactional
-    public boolean userSerach(UserDto.Request dto){
-
-        return false;
-    }
 
     /* 회원가입시, 유효성 검사 및 중복 체크 */
     @Transactional(readOnly = true)
