@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**" ,"/scss/**","/vendor/**");
+        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/scss/**", "/vendor/**");
 
     }
 
@@ -46,8 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/","/login", "/any/**", "/any/posts/read/**", "/posts/search/**")
-                .permitAll()
+                .antMatchers("/", "/login", "/any/posts/read/**", "/any/posts/search/**")
+                    .permitAll()
                 .anyRequest().authenticated()// 위 페이지 외 인증이 되어야 접근가능(ROLE에 상관없이)
                 .and()
                 .formLogin()

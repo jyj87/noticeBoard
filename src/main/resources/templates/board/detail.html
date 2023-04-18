@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/default_layout">
 <th:block layout:fragment="content">
-    <div class="container form-detail border border-info">
+    <div class="container form-detail">
         <div>
             <table class="table table-sm text-center">
                 <thead>
@@ -19,7 +19,7 @@
                            th:href="'/any/posts/modify/'+${post.id}">수정</a>
                     </div>
                 </tr>
-                <tr class="table-info">
+                <tr class="table-secondary">
                     <th colspan="2">글 읽기</th>
                 </tr>
                 </thead>
