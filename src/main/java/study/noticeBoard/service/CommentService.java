@@ -30,7 +30,7 @@ public class CommentService {
     /* CREATE */
     @Transactional
     public Long save(CommentDto.Request dto, Long id, String nickname){
-        log.info("PostsService save() 실행");
+        log.info("PostsService save() 코멘트 저장");
         User user = userRepository.findByNickname(nickname);
         Posts posts = postsRepository.findById(id).orElseThrow(() ->
                 new IllegalAnnotationException("댓글 쓰기 실패: 해당 게시글이 존재하지 않습니다. " + id));
@@ -46,7 +46,7 @@ public class CommentService {
     /* DELETE */
     @Transactional
     public Long delete(Long id){
-        log.info("PostsService delete() 실행");
+        log.info("PostsService delete() 코멘트 삭제");
         Comment comment = commentRepository.findById(id).orElseThrow(() ->
                 new IllegalAnnotationException("해당 댓글이 존재하지 않습니다. " + id));
         commentRepository.delete(comment);

@@ -27,7 +27,7 @@ public class UserService {
     /* 회원가입 */
     @Transactional
     public Long userJoin(UserDto.Request dto){
-        log.info("UserService userJoin() 실행");
+        log.info("UserService userJoin() 회원가입");
         dto.setPassword(encoder.encode(dto.getPassword()));
 
         return userRepository.save(dto.toEntity()).getId();
@@ -37,7 +37,8 @@ public class UserService {
     /* 회원가입시, 유효성 검사 및 중복 체크 */
     @Transactional(readOnly = true)
     public Map<String,String> validateHandling(Errors errors){
-        
+
+        log.info("UserService validateHandling() 회원가입시, 유효성 검사 및 중복 체크");
         Map<String,String> validatorResult = new HashMap<>();
 
         /* 유효성, 중복 검사에서 실패한 필드 목록을 받음 */

@@ -25,7 +25,7 @@ public class PostsService {
     /* CREATE */
     @Transactional
     public Long save(PostsDto.Request dto, String nickname) {
-        log.info("PostsService save() 실행");
+        log.info("PostsService save() 글작성");
         User user = userRepository.findByNickname(nickname);
         dto.setUser(user);
         Posts posts = dto.toEntity();
@@ -38,7 +38,7 @@ public class PostsService {
     /* Delete */
     @Transactional
     public void delete(Long id) {
-        log.info("PostsService delete() 실행");
+        log.info("PostsService delete() 글삭제");
         Posts posts = postsRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id: " + id));
 
@@ -51,7 +51,7 @@ public class PostsService {
      * 트랜잭션이 끝날 때 자동으로 DB에 저장해준다. */
     @Transactional
     public void update(Long id, String title, String content) {
-        log.info("PostsService update() 실행");
+        log.info("PostsService update() 글수정");
         Posts posts = postsRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id: " + id));
 
@@ -62,6 +62,7 @@ public class PostsService {
     /* PostRead */
     @Transactional(readOnly = true)
     public PostsDto.Response postRead(Long id) {
+        log.info("PostsService update() 글읽기 게시물 번호={}" ,id);
         Posts post = postsRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id: " + id));
 
@@ -87,6 +88,7 @@ public class PostsService {
     /* 검색 조회 */
     @Transactional(readOnly = true)
     public Page<Posts> titleSearch(String keyword, Pageable pageable, int searchKey) {
+        log.info("PostsService update() 게시물 검색");
 
         Page<Posts> postsList;
         /* 타이틀 검색 조회 */
